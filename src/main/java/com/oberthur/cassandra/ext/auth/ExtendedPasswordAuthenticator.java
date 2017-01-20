@@ -22,11 +22,11 @@ public class ExtendedPasswordAuthenticator extends PasswordAuthenticator {
         try {
             AuthenticatedUser authenticatedUser = super.authenticate(arg0);
             if (authenticatedUser != null) {
-                logger.info("Successful login: for " + (authenticatedUser.isSuper() ? "super" : "ordinary ") + "user" + authenticatedUser.getName());
+                logger.info("Successful login for username: %s, privileges: %s", authenticatedUser.getName(), (authenticatedUser.isSuper() ? "super user" : "standard user"));
             }
             return authenticatedUser;
         } catch (AuthenticationException e) {
-            logger.info("Unsuccessful login: with username: " + arg0.get(USERNAME_KEY));
+            logger.info("Unsuccessful login for username: " + arg0.get(USERNAME_KEY));
             logger.info("AuthenticationException: " + e.getMessage());
             throw(e);
         }
